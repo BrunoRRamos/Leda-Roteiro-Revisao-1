@@ -120,9 +120,12 @@ public class RepositorioProdutoArrayList {
 	 */
 	public Produto procurar(int codigo) {
 		try	{
-			Produto taget = (Produto) produtos.stream().filter(produto -> produto.getCodigo() == codigo);
-			return taget;
-
+			for (int i = 0; i < produtos.size(); i++) {
+				if (produtos.get(i).getCodigo() == codigo) {
+					return produtos.get(i);
+				}
+			}
+			return null;
 		} catch (Exception exception) {
 			throw new RuntimeException();
 		}
